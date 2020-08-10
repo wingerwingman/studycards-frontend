@@ -1,13 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component} from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <h2>Flash Cards</h2>
-    </div>
-  );
+class App extends Component {
+  
+  render(){
+
+    return (
+      <div className="App">
+        <h2>Flash Cards</h2>
+      </div>
+    );
+  }
+
 }
 
-export default App;
+export default connect()(App);
