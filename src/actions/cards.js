@@ -10,7 +10,6 @@ export const getCards = () => {
 export const addCard = (card) => {
     return (dispatch) => {
         dispatch({type: "ADDING_CARD"})
-        debugger
         fetch('/cards', {
             method: "POST",
             body: JSON.stringify(card), 
