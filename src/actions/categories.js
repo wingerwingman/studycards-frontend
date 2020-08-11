@@ -3,12 +3,13 @@ export const getCategories = () => {
         dispatch({type: "LOADING_CATEGORIES"})
         return fetch('/categories')
         .then(res => res.json())
-        .then(cards => dispatch({type: "CATEGORIES_LOADED", payload: categories}))
+        .then(categories => dispatch({type: "CATEGORIES_LOADED", payload: categories}))
     }
 }
 
 export const addCategory = (category) => {
     return (dispatch) => {
+        debugger
         dispatch({type: "ADDING_CATEGORY"})
         fetch('/categories', {
             method: "POST",

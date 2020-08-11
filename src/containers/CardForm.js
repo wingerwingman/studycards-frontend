@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addCard } from '../actions/cards'
+import { getCategory } from '../actions/categories'
 
 class CardForm extends Component {
     state = {
         question: "",
         code: "",
         answer: "",
+        category: "",
         loading: false
     }
 
@@ -21,6 +23,8 @@ class CardForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault() 
         const card = {question: this.state.question, code: this.state.code, answer: this.state.answer}
+        const category = {name: this.state.name}
+        this.props.addCategory(category)
         this.props.addCard(card)
         this.setState({
             question: "",
@@ -35,29 +39,41 @@ class CardForm extends Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <p>
-                    <h4>Question</h4>
+                    Category
+                    <input type="text"
+                    name="category"
+                    value={this.state.category}
+                    onChange={this.handleChange}
+                    />
+                    Question
                     <input type="text"
                     name="question"
                     value={this.state.question}
                     onChange={this.handleChange}
                     />
-                    <h4>Code Example</h4>
+                    Code Example
                     <input type="text"
                     name="code"
                     value={this.state.code}
                     onChange={this.handleChange}
-                    /></p>
-                    <h4>Answer</h4>
+                    />
+                    Answer
                     <input type="text"
                     name="answer"
                     value={this.state.answer}
                     onChange={this.handleChange}
-                    />
+                    /></p>
                     <input type="submit" />
                 </form>
             </div>
         )
     }
 }
+
+// const mapStateToProps = state => {
+//     return {
+
+//     }
+// }
 
 export default  connect(null, { addCard })(CardForm)

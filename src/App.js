@@ -1,12 +1,15 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { getCards } from './actions/cards';
+// import { getCategories } from './actions/categories';
 import './App.css';
 import CardForm from './containers/CardForm'
+import CategoryForm from './containers/CategoryForm'
 
 class App extends Component {
   componentDidMount(){
     this.props.getCards()
+    // this.props.getCategories()
   }
   
   render(){
@@ -17,6 +20,7 @@ class App extends Component {
       <div className="App">
         <h2>Make Flash Card</h2>
         <CardForm />
+        <CategoryForm />
         <h2>Flash Cards</h2>
         <ul>
           {/* Change later */}

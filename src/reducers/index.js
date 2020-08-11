@@ -4,7 +4,7 @@ import categoryReducer from './categoryReducer'
 
 const rootReducer = combineReducers({
     cardReducer,
-    categoryReducer,
+    categoryReducer
 })
 
 export default rootReducer
