@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { getCards } from './actions/cards';
 import './App.css';
+import CardForm from './containers/CardForm'
 
 class App extends Component {
   componentDidMount(){
@@ -9,11 +10,13 @@ class App extends Component {
   }
   
   render(){
-    const cards = this.props.cards.map((card, i) => <li key={i}>{card.question}</li>)
+    const cards = this.props.cards.map((card, i) => <h3 key={i}>{card.question}<br/>{card.code}</h3>)
 
 
     return (
       <div className="App">
+        <h2>Make Flash Card</h2>
+        <CardForm />
         <h2>Flash Cards</h2>
         <ul>
           {/* Change later */}
