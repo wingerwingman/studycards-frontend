@@ -6,6 +6,7 @@ class CardForm extends Component {
     state = {
         question: "",
         code: "",
+        answer: "",
         loading: false
     }
 
@@ -19,11 +20,12 @@ class CardForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault() 
-        const card = {question: this.state.question, code: this.state.code}
+        const card = {question: this.state.question, code: this.state.code, answer: this.state.answer}
         this.props.addCard(card)
         this.setState({
             question: "",
             code: "",
+            answer: "",
             loading: false
         })
     }
@@ -45,6 +47,12 @@ class CardForm extends Component {
                     value={this.state.code}
                     onChange={this.handleChange}
                     /></p>
+                    <h4>Answer</h4>
+                    <input type="text"
+                    name="answer"
+                    value={this.state.answer}
+                    onChange={this.handleChange}
+                    />
                     <input type="submit" />
                 </form>
             </div>
