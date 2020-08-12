@@ -32,7 +32,7 @@ class CardForm extends Component {
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <p>
-                    Category
+                    Create a New Category
                     <input type="text"
                     name="category"
                     value={this.state.category}

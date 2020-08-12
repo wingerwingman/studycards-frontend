@@ -9,7 +9,6 @@ export const getCategories = () => {
 
 export const addCategory = (category) => {
     return (dispatch) => {
-        debugger
         dispatch({type: "ADDING_CATEGORY"})
         fetch('/categories', {
             method: "POST",

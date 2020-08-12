@@ -1,27 +1,36 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addCard } from '../actions/cards'
-import { getCategory } from '../actions/categories'
+import { getCategories } from '../actions/categories'
+import { addCategory } from '../actions/categories'
+import Select from 'react-select'
 
 class CardForm extends Component {
     state = {
         question: "",
         code: "",
         answer: "",
-        category: "",
+        category_id: "",
         loading: false
     }
 
+    componentDidMount(){
+        return dispatch => {
+            dispatch({type: "LOADING_CATEGORIES"})
+            return fetch('/categories')
+            .then(res => res.json())
+            .then(categories => dispatch({type: "CATEGORIES_LOADED", payload: categories}))
+        }
+    }
+
     handleChange = (e) => {
-        // this.setState({
-        //     question: e.target.question,
-        //     code: e.target.code
-        // })
+        debugger
         this.setState({ [e.target.name]: e.target.value });
     }
 
     handleSubmit = (e) => {
         e.preventDefault() 
+        
         const card = {question: this.state.question, code: this.state.code, answer: this.state.answer}
         const category = {name: this.state.name}
         this.props.addCategory(category)
@@ -35,16 +44,12 @@ class CardForm extends Component {
     }
 
     render() {
+        debugger
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <p>
-                    Category
-                    <input type="text"
-                    name="category"
-                    value={this.state.category}
-                    onChange={this.handleChange}
-                    />
+                    {/* <Select>this.props.categories.map((cat) => {cat.id}<br/>{cat.name})</Select> */}
                     Question
                     <input type="text"
                     name="question"
@@ -72,8 +77,10 @@ class CardForm extends Component {
 
 // const mapStateToProps = state => {
 //     return {
-
+//       categories: state.addCategories,
+//       cards: state.cardReducer.cards,
+//       loading: state.cardReducer.loading
 //     }
-// }
+//   }
 
-export default  connect(null, { addCard })(CardForm)
+export default connect(null, { addCard })(CardForm)
