@@ -10,24 +10,19 @@ class CardForm extends Component {
         question: "",
         code: "",
         answer: "",
-        category_id: "",
+        name: "",
         loading: false
     }
 
-    componentDidMount(){
-        return dispatch => {
-            dispatch({type: "LOADING_CATEGORIES"})
-            return fetch('/categories')
-            .then(res => res.json())
-            .then(categories => dispatch({type: "CATEGORIES_LOADED", payload: categories}))
-        }
+    componentDidMount() {
+        this.props.getCategories()
     }
-
+    
     handleChange = (e) => {
-        debugger
+        // debugger
         this.setState({ [e.target.name]: e.target.value });
     }
-
+    
     handleSubmit = (e) => {
         e.preventDefault() 
         
@@ -42,12 +37,18 @@ class CardForm extends Component {
             loading: false
         })
     }
-
+    
     render() {
         debugger
+ 
+        // const categories = this.props.categories.map((cat, i) => <h3 key={i}>{cat.name}</h3>)
+
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
+                    <ul>
+                    {/* Change later */}
+                    {this.props.loading ? <h3>Loading....</h3> : categories}
                     <p>
                     {/* <Select>this.props.categories.map((cat) => {cat.id}<br/>{cat.name})</Select> */}
                     Question
@@ -75,12 +76,11 @@ class CardForm extends Component {
     }
 }
 
-// const mapStateToProps = state => {
-//     return {
-//       categories: state.addCategories,
-//       cards: state.cardReducer.cards,
-//       loading: state.cardReducer.loading
-//     }
-//   }
+const mapStateToProps = state => {
+    return {
+        categories: state.categoryReducer.categories,
+        loading: state.categoryReducer.loading
+      }
+}
 
-export default connect(null, { addCard })(CardForm)
+export default connect(mapStateToProps, { addCard, getCategories })(CardForm)

@@ -1,18 +1,24 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { getCards } from '../actions/cards';
-import CardForm from '../containers/CardForm';
-import CategoryForm from '../containers/CategoryForm';
 
 class Home extends Component {
     componentDidMount() {
         this.props.getCards()
-        // this.props.getCategories()
     }
-      
-    render() {
-        const cards = this.props.cards.map((card, i) => <h3 key={i}>{card.question}<br/>{card.code}</h3>)
     
+    // handleClick() {
+        
+    //         this.props.getCards()
+    //         debugger
+    //         // const id = event.toElement.id - 1
+    //         // this.props.cards {card.answer}
+        
+    // }
+    
+    render() {
+        const cards = this.props.cards.map((card, i) => <h3 key={i}>{card.question}<br/>{card.code}<br /><button id={card.id} onClick={this.handleClick}>Answer</button></h3>)
+        
     
         return (
           <div className="Home">
@@ -29,7 +35,6 @@ class Home extends Component {
     
     const mapStateToProps = state => {
       return {
-        categories: state.categoryReducer.categories,
         cards: state.cardReducer.cards,
         loading: state.cardReducer.loading
       }
