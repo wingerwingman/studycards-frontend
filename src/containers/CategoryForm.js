@@ -19,7 +19,6 @@ class CardForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault() 
         const category = {name: this.state.category}
-        debugger
         this.props.addCategory(category)
         this.setState({
             category: "",

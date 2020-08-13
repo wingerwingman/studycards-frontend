@@ -23,6 +23,18 @@ export default (state = { cards: [], loading: false}, action) => {
                 loading: false 
             }
 
+        case "DELETING_CARD":
+            return {
+                ...state,
+                loading: true
+            }
+        case "CARD_DELETED":
+            return {
+                ...state,
+                cards: [...state.cards.filter(card => `${card.id}` !== action.payload)],
+                loading: false 
+            }
+
         
         default:
             return state

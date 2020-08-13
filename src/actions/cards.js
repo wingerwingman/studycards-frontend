@@ -21,3 +21,16 @@ export const addCard = (card) => {
         .then(card => dispatch({type: "CARD_ADDED", payload: card}))
     }
 }
+
+export const deleteCard = (id) => {
+    return (dispatch) => {
+        dispatch({type: "DELETING_CARD"})
+        fetch(`/cards/${id}`, {
+            method: "DELETE",
+            headers:{
+                'Content-type': 'application/json'
+            }
+        })
+        .then(() => dispatch({type: "CARD_DELETED", payload: id}))
+    }
+}

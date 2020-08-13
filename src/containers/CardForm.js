@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addCard } from '../actions/cards'
 import { getCategories } from '../actions/categories'
-import Select from 'react-select'
+// import Select from 'react-select'
 
 class CardForm extends Component {
     state = {
@@ -21,14 +21,20 @@ class CardForm extends Component {
     
     handleChange = (e) => {
         // debugger
-        console.log(e.target.value)
-        this.setState({ [e.target.name]: e.target.value });
+        console.log(e.target) 
+        if (e.target.name === "") {
+            e.target.name = "category_id"
+            return this.setState({ [e.target.name]: e.target.value });
+        } else {
+            return this.setState({ [e.target.name]: e.target.value });
+        } 
+        
     }
     
     handleSubmit = (e) => {
         e.preventDefault() 
-
-        const card = {question: this.state.question, code: this.state.code, answer: this.state.answer, category_id: this.state[""]}
+        // debugger
+        const card = {question: this.state.question, code: this.state.code, answer: this.state.answer, category_id: this.state.category_id}
         console.log(card)
         // const category = {name: this.state.name}
         // this.props.addCategory(category)
@@ -50,9 +56,9 @@ class CardForm extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <p>
                     <select onChange={this.handleChange}>
-                    <option disabled selected >Select</option>
-                    {this.props.categories.map((item, i) => (
-        	        <option key={i} value={item.id}> {item.name} </option>
+                    <option disabled hidden value=''>Select</option>
+                    {this.props.categories.map((item) => (
+        	        <option key={item.id} value={item.id}> {item.name} </option>
                     ))}
                     </select>
 
