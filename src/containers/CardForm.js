@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addCard } from '../actions/cards'
 import { getCategories } from '../actions/categories'
-import { addCategory } from '../actions/categories'
 import Select from 'react-select'
 
 class CardForm extends Component {
@@ -11,11 +10,13 @@ class CardForm extends Component {
         code: "",
         answer: "",
         name: "",
+        category_id: "",
         loading: false
     }
 
     componentDidMount() {
         this.props.getCategories()
+        // console.log(this.props.categories)
     }
     
     handleChange = (e) => {
@@ -25,32 +26,35 @@ class CardForm extends Component {
     
     handleSubmit = (e) => {
         e.preventDefault() 
-        
-        const card = {question: this.state.question, code: this.state.code, answer: this.state.answer}
-        const category = {name: this.state.name}
-        this.props.addCategory(category)
+        // debugger
+        const card = {question: this.state.question, code: this.state.code, answer: this.state.answer, category_id: this.state.category_id}
+        debugger
+        // const category = {name: this.state.name}
+        // this.props.addCategory(category)
         this.props.addCard(card)
         this.setState({
             question: "",
             code: "",
             answer: "",
+            category_id: 0,
+
             loading: false
         })
     }
     
     render() {
-        debugger
- 
-        // const categories = this.props.categories.map((cat, i) => <h3 key={i}>{cat.name}</h3>)
 
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <ul>
-                    {/* Change later */}
-                    {this.props.loading ? <h3>Loading....</h3> : categories}
                     <p>
-                    {/* <Select>this.props.categories.map((cat) => {cat.id}<br/>{cat.name})</Select> */}
+                    <select onChange={this.handleChange}>
+                    <option disabled selected >Select</option>
+                    {this.props.categories.map((item, i) => (
+        	        <option key={i} name={item.id}>{item.name} </option>
+                    ))}
+                    </select>
+
                     Question
                     <input type="text"
                     name="question"
@@ -80,7 +84,7 @@ const mapStateToProps = state => {
     return {
         categories: state.categoryReducer.categories,
         loading: state.categoryReducer.loading
-      }
+    }
 }
 
-export default connect(mapStateToProps, { addCard, getCategories })(CardForm)
+export default connect(mapStateToProps, { getCategories, addCard })(CardForm)

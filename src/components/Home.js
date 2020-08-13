@@ -17,7 +17,8 @@ class Home extends Component {
     // }
     
     render() {
-        const cards = this.props.cards.map((card, i) => <h3 key={i}>{card.question}<br/>{card.code}<br /><button id={card.id} onClick={this.handleClick}>Answer</button></h3>)
+        
+        const cards = this.props.cards.map((card, i) => <h3 key={i}>{card.question}<br/>{card.code}<br /><button id={card.id} onClick={card.answer}>Answer</button></h3>)
         
     
         return (
