@@ -1,6 +1,7 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { getCards, deleteCard } from '../actions/cards';
+import { getCategories } from '../actions/categories'
 
 
 
@@ -47,4 +48,4 @@ class Home extends Component {
 
 
     
-export default connect(mapStateToProps, { getCards, deleteCard })(Home);
+export default connect(mapStateToProps, { getCards, deleteCard, getCategories })(Home);

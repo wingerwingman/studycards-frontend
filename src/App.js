@@ -4,7 +4,7 @@ import './App.css';
 import NavBar from './components/NavBar'
 import Home from './components/Home'
 import CreateCard from './components/CreateCard'
-
+import CategoryPath from './components/CategoryPath'
 const App = (props) => {
 
     return (
@@ -13,6 +13,7 @@ const App = (props) => {
         <NavBar />
         <Route exact path="/" component={Home} />
         <Route exact path="/createcard" component={CreateCard} />
+        <Route exact path="/CategoryPath" component={CategoryPath} />
       </div>
       </Router>
     );
