@@ -16,6 +16,7 @@ class Home extends Component {
     handleChange = (e) => {
       // debugger
       alert(e.target.value)
+      
     }
     
     render() {
