@@ -10,7 +10,7 @@ class CardForm extends Component {
         code: "",
         answer: "",
         name: "",
-        category_id: "",
+        category_id: 0,
         loading: false
     }
 
@@ -21,14 +21,15 @@ class CardForm extends Component {
     
     handleChange = (e) => {
         // debugger
+        console.log(e.target.value)
         this.setState({ [e.target.name]: e.target.value });
     }
     
     handleSubmit = (e) => {
         e.preventDefault() 
-        // debugger
-        const card = {question: this.state.question, code: this.state.code, answer: this.state.answer, category_id: this.state.category_id}
-        debugger
+
+        const card = {question: this.state.question, code: this.state.code, answer: this.state.answer, category_id: this.state[""]}
+        console.log(card)
         // const category = {name: this.state.name}
         // this.props.addCategory(category)
         this.props.addCard(card)
@@ -51,7 +52,7 @@ class CardForm extends Component {
                     <select onChange={this.handleChange}>
                     <option disabled selected >Select</option>
                     {this.props.categories.map((item, i) => (
-        	        <option key={i} name={item.id}>{item.name} </option>
+        	        <option key={i} value={item.id}> {item.name} </option>
                     ))}
                     </select>
 
