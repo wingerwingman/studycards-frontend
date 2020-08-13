@@ -1,11 +1,12 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
 import { getCards, deleteCard } from '../actions/cards';
-import { getCategories } from '../actions/categories'
+import { getCategories } from '../actions/categories';
+import { CardCategoryDropdown } from '../containers/CardCategoryDropdown';
 
 
 
-class Home extends Component {
+class CategoryPath extends Component {
   
     componentDidMount() {
         this.props.getCards()
@@ -27,7 +28,8 @@ class Home extends Component {
         
     
         return (
-          <div className="Home">
+          <div className="CategoryDropdown">
+            <CardCategoryDropdown />
             <h2>Flash Cards</h2>
             <ul>
               {/* Change later */}
@@ -48,4 +50,4 @@ class Home extends Component {
 
 
     
-export default connect(mapStateToProps, { getCards, deleteCard, getCategories })(Home);
+export default connect(mapStateToProps, { getCards, deleteCard, getCategories, CardCategoryDropdown })(CategoryPath);

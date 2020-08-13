@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import CreateCard from './components/CreateCard'
 import CategoryPath from './components/CategoryPath'
+
 const App = (props) => {
 
     return (
