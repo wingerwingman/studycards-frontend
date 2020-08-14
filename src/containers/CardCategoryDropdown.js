@@ -9,22 +9,19 @@ class CardCategoryDropdown extends Component {
 
     componentDidMount() {
         this.props.getCategories()
-        // console.log(this.props.categories)
     }
 
-    handleChange = (selectedOption) => {
-        this.setState({ selectedOption });
-        console.log(selectedOption)
+    handleChange = (e) => {
+        if (e.target.name === "")
+        e.target.name = "category_id"
     }
 
     render() {
 
-        // const { selectedOption } this.state;
-
         return (
             <div>
             <select onChange={this.handleChange}>
-                <option disabled hidden value=''>Select</option>
+                <option value='Select'>Select</option>
                 {this.props.categories.map((item) => (
                 <option key={item.id} value={item.id}> {item.name} </option>
                 ))}

@@ -1,13 +1,12 @@
 import React, { Component} from 'react';
 import { connect } from 'react-redux';
-import { getCards } from '../actions/cards';
+import { getCards, deleteCard } from '../actions/cards';
 import CardForm from '../containers/CardForm';
 import CategoryForm from '../containers/CategoryForm';
 
 class CreateCard extends Component {
     componentDidMount() {
         this.props.getCards()
-        // this.props.getCategories()
     }
       
     render() {
@@ -40,4 +39,4 @@ class CreateCard extends Component {
 
 
     
-export default connect(mapStateToProps, { getCards })(CreateCard);
+export default connect(mapStateToProps, { getCards, deleteCard })(CreateCard);

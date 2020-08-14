@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addCard } from '../actions/cards'
 import { getCategories } from '../actions/categories'
-// import Select from 'react-select'
 
 class CardForm extends Component {
     state = {
@@ -16,11 +15,9 @@ class CardForm extends Component {
 
     componentDidMount() {
         this.props.getCategories()
-        // console.log(this.props.categories)
     }
     
     handleChange = (e) => {
-        // debugger
         console.log(e.target) 
         if (e.target.name === "") {
             e.target.name = "category_id"
@@ -33,11 +30,7 @@ class CardForm extends Component {
     
     handleSubmit = (e) => {
         e.preventDefault() 
-        // debugger
         const card = {question: this.state.question, code: this.state.code, answer: this.state.answer, category_id: this.state.category_id}
-        console.log(card)
-        // const category = {name: this.state.name}
-        // this.props.addCategory(category)
         this.props.addCard(card)
         this.setState({
             question: "",
@@ -56,26 +49,26 @@ class CardForm extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <p>
                     <select onChange={this.handleChange}>
-                    <option disabled hidden value=''>Select</option>
+                    <option value='Select'>Select</option>
                     {this.props.categories.map((item) => (
         	        <option key={item.id} value={item.id}> {item.name} </option>
                     ))}
                     </select>
-
+                    <br />
                     Question
-                    <input type="text"
+                    <textarea
                     name="question"
                     value={this.state.question}
                     onChange={this.handleChange}
                     />
                     Code Example
-                    <input type="text"
+                    <textarea
                     name="code"
                     value={this.state.code}
                     onChange={this.handleChange}
                     />
                     Answer
-                    <input type="text"
+                    <textarea
                     name="answer"
                     value={this.state.answer}
                     onChange={this.handleChange}

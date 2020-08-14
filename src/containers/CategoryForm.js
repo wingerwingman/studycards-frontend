@@ -9,10 +9,6 @@ class CardForm extends Component {
     }
 
     handleChange = (e) => {
-        // this.setState({
-        //     question: e.target.question,
-        //     code: e.target.code
-        // })
         this.setState({ [e.target.name]: e.target.value });
     }
 
@@ -44,11 +40,5 @@ class CardForm extends Component {
         )
     }
 }
-
-// const mapStateToProps = state => {
-//     return {
-
-//     }
-// }
 
 export default  connect(null, { addCategory })(CardForm)
