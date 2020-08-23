@@ -10,19 +10,12 @@ class CreateCard extends Component {
     }
       
     render() {
-      const cards = this.props.cards.filter().map((card, i) => <h3 key={i}>{card.question}<br/>{card.code}<br /><button value={card.answer} key={card.id} onClick={this.handleChange}>Answer{this.props.answer}</button><button id={card.id} onClick={this.handleClick}>X</button></h3>)
-    
     
         return (
           <div className="App">
             <h2>Make Flash Card</h2>
             <CardForm />
             <CategoryForm />
-            <h2>Flash Cards</h2>
-            <ul>
-              {/* Change later */}
-              {this.props.loading ? <h3>Loading....</h3> : cards}
-            </ul>
           </div>
         );
       }
