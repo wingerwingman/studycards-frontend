@@ -4,6 +4,7 @@ import { addCard } from '../actions/cards'
 import { getCategories } from '../actions/categories'
 
 class CardForm extends Component {
+
     state = {
         question: "",
         code: "",
@@ -14,11 +15,13 @@ class CardForm extends Component {
     }
 
     componentDidMount() {
+
         this.props.getCategories()
+        
     }
     
     handleChange = (e) => {
-        console.log(e.target) 
+
         if (e.target.name === "") {
             e.target.name = "category_id"
             return this.setState({ [e.target.name]: e.target.value });
@@ -29,6 +32,7 @@ class CardForm extends Component {
     }
     
     handleSubmit = (e) => {
+
         e.preventDefault() 
         const card = {question: this.state.question, code: this.state.code, answer: this.state.answer, category_id: this.state.category_id}
         this.props.addCard(card)
