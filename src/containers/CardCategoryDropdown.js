@@ -23,21 +23,16 @@ class CardCategoryDropdown extends Component {
     }
 
     handleChange = (e) => {
+
         this.setState({
             filterOption: parseInt(e.target.value)
         })
         getCards()
-        // if (e.target.name === "") {
-        //     e.target.name = "category_id"
-        //     return this.setState({ [e.target.name]: e.target.value });
-        // } else {
-        //     return this.setState({ [e.target.name]: e.target.value });
-        // } 
+ 
     }
 
     render() {
         
-        // debugger
         let cards = [];
         if (this.state.filterOption !== 0){
             cards = this.props.cards.filter(option => option.category_id === this.state.filterOption).map((card, i) => <h3 key={i}>{card.question}<br/>{card.code}<br /><button value={card.answer} key={card.id} onClick={this.handleAnswerChange}>Answer{this.props.answer}</button><button id={card.id} onClick={this.handleClick}>X</button></h3>)
@@ -47,9 +42,9 @@ class CardCategoryDropdown extends Component {
 
         return (
             <div>
-            <tbody>   
+            <tbody align="center">   
             <select onChange={this.handleChange}>
-                <option value='Select'>Select</option>
+                <option value='0'>Select</option>
                 {this.props.categories.map((item) => (
                 <option key={item.id} value={item.id}> {item.name} </option>
                 ))}
