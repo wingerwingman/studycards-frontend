@@ -42,7 +42,7 @@ class CardCategoryDropdown extends Component {
 
         return (
             <div>
-            <tbody align="center">   
+            <body>   
             <select onChange={this.handleChange}>
                 <option value='0'>Select</option>
                 {this.props.categories.map((item) => (
@@ -52,7 +52,7 @@ class CardCategoryDropdown extends Component {
                 {/* Change later */}
             </select>
               {this.props.loading ? <h3>Loading....</h3> : cards}
-            </tbody>
+            </body>
             </div>
         )
 
