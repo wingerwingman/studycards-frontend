@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCards, deleteCard } from '../actions/cards';
 import CardCategoryDropdown from '../containers/CardCategoryDropdown';
 
 
 
 class FlashCards extends Component {
-  
-    componentDidMount() {
-        this.props.getCards()
-    }
 
     handleClick = (e) =>{
       this.props.deleteCard(e.target.id)
@@ -31,14 +26,7 @@ class FlashCards extends Component {
       }
     
     }
-    
-    const mapStateToProps = state => {
-      return {
-        cards: state.cardReducer.cards,
-        loading: state.cardReducer.loading
-      }
-    }
 
 
     
-export default connect(mapStateToProps, { getCards, deleteCard, CardCategoryDropdown })(FlashCards);
+export default connect(null, { CardCategoryDropdown })(FlashCards);

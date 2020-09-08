@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCategories } from '../actions/categories';
 import { getCards, deleteCard } from '../actions/cards';
+import categoryReducer from '../reducers/categoryReducer';
 
 class CardCategoryDropdown extends Component {
 
@@ -68,5 +69,10 @@ const mapStateToProps = state => {
         categories: state.categoryReducer.categories,
     }
 }
+
+// state = {
+//  cardReducer: {state-from-cardReducer-file},
+//  categoryReducer: {state-form-categoryReducer-file}
+// }
 
 export default connect(mapStateToProps, { getCategories, getCards, deleteCard })(CardCategoryDropdown)

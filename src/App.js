@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import Welcome from './components/Welcome'
 import FlashCards from './components/FlashCards'
 import CreateCard from './components/CreateCard'
+import Footer from './components/Footer'
 
 const App = () => {
 
@@ -15,6 +16,7 @@ const App = () => {
         <Route exact path="/" component={Welcome} />
         <Route exact path="/FlashCards" component={FlashCards} />
         <Route exact path="/CreateCard" component={CreateCard} />
+        <Footer />
       </div>
       </Router>
     );
