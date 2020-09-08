@@ -36,16 +36,16 @@ class CardCategoryDropdown extends Component {
         
         let cards = [];
         if (this.state.filterOption !== 0){
-            cards = this.props.cards.filter(option => option.category_id === this.state.filterOption).map((card, i) => <h3 key={i}>{card.question}<br/>{card.code}<br /><button value={card.answer} key={card.id} onClick={this.handleAnswerChange}>Answer{this.props.answer}</button><button id={card.id} onClick={this.handleClick}>X</button></h3>)
+            cards = this.props.cards.filter(option => option.category_id === this.state.filterOption).map((card, i) => <center><h3 class="boxed" key={i}>{card.question}<br/>{card.code}<br /><button value={card.answer} key={card.id} onClick={this.handleAnswerChange}>Answer{this.props.answer}</button><button id={card.id} onClick={this.handleClick}>X</button></h3></center>)
         } else { 
-            cards = this.props.cards.map((card, i) => <h3 key={i}>{card.question}<br/>{card.code}<br /><button value={card.answer} key={card.id} onClick={this.handleAnswerChange}>Answer{this.props.answer}</button><button id={card.id} onClick={this.handleClick}>X</button></h3>)
+            cards = this.props.cards.map((card, i) => <center><h3 class="boxed" key={i}>{card.question}<br/>{card.code}<br /><button value={card.answer} key={card.id} onClick={this.handleAnswerChange}>Answer{this.props.answer}</button><button id={card.id} onClick={this.handleClick}>X</button></h3></center>)
         }
 
         return (
             <div>
-            <body>   
-            <select onChange={this.handleChange}>
-                <option value='0'>Select</option>
+            <body>  
+            <select onChange={this.handleChange} >
+                <option value='0' >Select</option>
                 {this.props.categories.map((item) => (
                 <option key={item.id} value={item.id}> {item.name} </option>
                 ))}

@@ -1,4 +1,4 @@
-.footer{
+.footer {
   margin-top: 1rem;
   padding: 1rem;
   background-color: grey;
@@ -6,6 +6,13 @@
   bottom: 0;
   left: 0;
   width: 100%;
+}
+
+.boxed {
+  width: 300px;
+  border: 15px solid black;
+  padding: 50px;
+  margin: 20px;
 }
 
 .navbar {
