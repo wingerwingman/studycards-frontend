@@ -5,17 +5,8 @@ import CardCategoryDropdown from '../containers/CardCategoryDropdown';
 
 
 class FlashCards extends Component {
-
-    handleClick = (e) =>{
-      this.props.deleteCard(e.target.id)
-    }
-
-    handleChange = (e) => {
-      alert(e.target.value)
-    }
     
     render() {
-        
         
         return (
           <div className="FlashCards">
@@ -26,7 +17,6 @@ class FlashCards extends Component {
       }
     
     }
-
 
     
 export default connect(null, { CardCategoryDropdown })(FlashCards);

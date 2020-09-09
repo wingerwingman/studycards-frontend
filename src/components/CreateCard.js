@@ -1,13 +1,8 @@
 import React, { Component} from 'react';
-import { connect } from 'react-redux';
-import { getCards, deleteCard } from '../actions/cards';
 import CardForm from '../containers/CardForm';
 import CategoryForm from '../containers/CategoryForm';
 
 class CreateCard extends Component {
-    componentDidMount() {
-        this.props.getCards()
-    }
       
     render() {
     
@@ -21,15 +16,6 @@ class CreateCard extends Component {
       }
     
     }
-    
-    const mapStateToProps = state => {
-      return {
-        categories: state.categoryReducer.categories,
-        cards: state.cardReducer.cards,
-        loading: state.cardReducer.loading
-      }
-    }
-
 
     
-export default connect(mapStateToProps, { getCards, deleteCard })(CreateCard);
+export default CreateCard;
