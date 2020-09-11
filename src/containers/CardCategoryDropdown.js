@@ -44,7 +44,7 @@ class CardCategoryDropdown extends Component {
             <div>
             <body>  
             <select onChange={this.handleChange} >
-                <option value='0' >Select</option>
+                <option value='0' >All</option>
                 {this.props.categories.map((item) => (
                 <option key={item.id} value={item.id}> {item.name} </option>
                 ))}
